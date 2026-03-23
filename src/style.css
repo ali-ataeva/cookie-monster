@@ -1,9 +1,29 @@
+    :root {
+    --neutral-900: #0D0D0D;
+    --neutral-800: #1A1A1A;
+    --neutral-600: #262626;
+    --neutral-400: #333333;
+    --neutral-200: #BFBFBF;
+    --neutral-100: #F2F2F2;
+
+    --primary-500: #8C4AFF;
+    --primary-900: #6234B2;
+
+    --secondary-500: #FFC64A;
+    --secondary-900: #B28B34;
+
+    --error: #FF4A4A;
+    --success: #4AFF4A;
+
+    --font-family: "Geom",
+        sans-serif;
+ }
 * {
-    font-family: "Geom", sans-serif;
+    font-family: var(--font-family);
 }
 body {
-    background-color: #0D0D0D;
-    color: #F2F2F2;
+    background-color: var(--neutral-900);
+    color: var(--neutral-100);
     width: 100%;
     height: 100vh;
     display: flex;

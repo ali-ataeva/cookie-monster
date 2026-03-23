@@ -38,7 +38,7 @@ const coin = ref<string>("./coin.png")
     font-size: 1.5em;
     justify-content: space-between;
     align-items: center;
-    border-bottom: #FFC64A solid 1px;
+    border-bottom: var(--secondary-500) solid 1px;
   }
   img.achievement-badge{
     width: auto;

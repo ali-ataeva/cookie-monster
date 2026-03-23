@@ -15,7 +15,7 @@
 <style scoped>
     footer{
     width: 100%;
-    background-color: #1A1A1A;
+    background-color: var(--neutral-800);
     height: 5rem;
     z-index: 3;
     display: flex;
@@ -23,10 +23,10 @@
     align-items: center;
   }
   footer button{
-    background-color: #8C4AFF;
-    color: #F2F2F2;
+    background-color: var(--primary-900);
+    color: var(--neutral-100);
     border: none;
-    box-shadow: 0 0 17px 0 #8C4AFF , inset 0 -4px 13px 0 #B88FFF  ;
+    box-shadow: 0 0 17px 0 var(--primary-500) , inset 0 -4px 13px 0 #B88FFF  ;
     border-radius: 10rem;
     width: 100%;
     margin: 1.2rem;
@@ -42,7 +42,7 @@
   .launch-button{
     width: 100%;
     height: 100%;
-    background-color: #262626;
+    background-color: var(--neutral-600);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +64,7 @@
       align-items: center;
     }
     .launch-button{
-      border-top: #333333 solid 8px;
+      border-top: var(--neutral-400) solid 8px;
     }
 
   }

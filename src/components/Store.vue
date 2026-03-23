@@ -14,7 +14,7 @@ import Weapons from './store-components/Weapons.vue';
     gap: 8px;
     width: 100%;
     justify-content: space-between;
-    background-color: #333333;
+    background-color: var(--neutral-400);
     z-index: 2;
     box-shadow: -3px 0px 6px 0px rgb(0, 0, 0);
   }
