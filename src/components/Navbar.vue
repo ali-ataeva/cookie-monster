@@ -9,7 +9,7 @@
 </template>
 <style scoped>
     nav{
-    background-color: #1A1A1A;
+    background-color: var(--neutral-800);
     z-index: 3;
     display: flex;
     justify-content: space-between;
@@ -22,9 +22,9 @@
     font-weight: 500;
   }
   nav button{
-    color: #BFBFBF;
-    background-color: #1A1A1A;
-    border: #BFBFBF solid 2px;
+    color: var(--neutral-200);
+    background-color: var(--neutral-800);
+    border: var(--neutral-200) solid 2px;
     padding: 0.25rem 0.5rem;
     height: max-content;
     border-radius: 8px;
