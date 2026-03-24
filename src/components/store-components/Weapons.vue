@@ -6,19 +6,19 @@
           <p>weapons</p>
           <ul>
             <li>
-              <img src="/public/weapon-1.png" alt="">
+              <img src="/weapon-1.png" alt="">
             </li>
             <li>
-              <img src="/public/weapon-2.png" alt="">
+              <img src="/weapon-2.png" alt="">
             </li>
             <li>
-              <img src="/public/weapon-3.png" alt="">
+              <img src="/weapon-3.png" alt="">
             </li>
             <li>
-              <img src="/public/weapon-4.png" alt="">
+              <img src="/weapon-4.png" alt="">
             </li>
             <li>
-              <img src="/public/weapon-5.png" alt="">
+              <img src="/weapon-5.png" alt="">
             </li>
           </ul>
     </section>

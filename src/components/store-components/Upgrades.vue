@@ -7,11 +7,11 @@
           <ul>
             <li>
               <div class="main-content">
-                <img class="upgrade-img" src="/public/cursor.png" alt="">
+                <img class="upgrade-img" src="/cursor.png" alt="">
                 <div class="name-cost">
                   <p>Cursor</p>
                   <div class="cost">
-                    <img src="/public/coin.png" alt="game currency coin">
+                    <img src="/coin.png" alt="game currency coin">
                     <p>500</p>
                   </div>
                 </div>
@@ -20,11 +20,11 @@
             </li>
             <li>
               <div class="main-content">
-                <img src="/public/upgrade-placeholder.png" alt="">
+                <img src="/upgrade-placeholder.png" alt="">
                 <div class="name-cost">
                   <p>???</p>
                   <div class="cost">
-                    <img src="/public/coin.png" alt="game currency coin">
+                    <img src="/coin.png" alt="game currency coin">
                     <p>500</p>
                   </div>
                 </div>
@@ -33,11 +33,11 @@
             </li>
             <li>
               <div class="main-content">
-                <img src="/public/upgrade-placeholder.png" alt="">
+                <img src="/upgrade-placeholder.png" alt="">
                 <div class="name-cost">
                   <p>???</p>
                   <div class="cost">
-                    <img src="/public/coin.png" alt="game currency coin">
+                    <img src="/coin.png" alt="game currency coin">
                     <p>1 500</p>
                   </div>
                 </div>
@@ -46,11 +46,11 @@
             </li>
             <li>
               <div class="main-content">
-                <img src="/public/upgrade-placeholder.png" alt="">
+                <img src="/upgrade-placeholder.png" alt="">
                 <div class="name-cost">
                   <p>???</p>
                   <div class="cost">
-                    <img src="/public/coin.png" alt="game currency coin">
+                    <img src="/coin.png" alt="game currency coin">
                     <p>5 000</p>
                   </div>
                 </div>
@@ -59,11 +59,11 @@
             </li>
             <li>
               <div class="main-content">
-                <img src="/public/upgrade-placeholder.png" alt="">
+                <img src="/upgrade-placeholder.png" alt="">
                 <div class="name-cost">
                   <p>???</p>
                   <div class="cost">
-                    <img src="/public/coin.png" alt="game currency coin">
+                    <img src="/coin.png" alt="game currency coin">
                     <p>10 000</p>
                   </div>
                 </div>
@@ -72,11 +72,11 @@
             </li>
             <li>
               <div class="main-content">
-                <img src="/public/upgrade-placeholder.png" alt="">
+                <img src="/upgrade-placeholder.png" alt="">
                 <div class="name-cost">
                   <p>???</p>
                   <div class="cost">
-                    <img src="/public/coin.png" alt="game currency coin">
+                    <img src="/coin.png" alt="game currency coin">
                     <p>50 000</p>
                   </div>
                 </div>
