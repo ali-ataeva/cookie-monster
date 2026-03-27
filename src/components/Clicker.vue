@@ -7,6 +7,8 @@ const storeCounter = useCounterStore();
 function increaseCount() {
   storeCounter.count++;
 }
+
+//Based on counter value assign display a players level
 const defaultLevel = { name: "Recruit", icon: "./achievement-cup.png" };
 const levels = [
   { min: 500000000, name: "Living Legend", icon: "./achievement-cup.png" },
