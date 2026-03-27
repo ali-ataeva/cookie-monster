@@ -1,7 +1,13 @@
 <script lang="ts" setup>
 import { ref } from "vue";
+import { useCounterStore } from "../counter";
 const badge = ref<string>("./achievement-cup.png")
 const coin = ref<string>("./coin.png")
+
+const storeCounter = useCounterStore();
+function increaseCount() {
+  storeCounter.count++;
+}
 </script>
 <template>
     <article class="clicker">
@@ -9,8 +15,8 @@ const coin = ref<string>("./coin.png")
           <img class="achievement-badge" :src="badge" alt="">
           <p>Cadet</p>
         </div>
-        <p class="coin-counter">1000 Coins</p>
-        <button class="click-coin">
+        <p class="coin-counter">{{ storeCounter.count }} Coins</p>
+        <button @click="increaseCount" class="click-coin">
           <img :src="coin" alt="game currency coin">
         </button>
       </article>
