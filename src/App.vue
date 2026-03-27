@@ -2,7 +2,7 @@
 import Clicker from './components/Clicker.vue';
 import MainFooter from './components/MainFooter.vue';
 import Navbar from './components/Navbar.vue';
-import Store from './components/Store.vue';
+import Store from './components/Shop.vue';
 </script>
 
 <template>

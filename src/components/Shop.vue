@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Upgrades from './store-components/Upgrades.vue';
-import Weapons from './store-components/Weapons.vue';
+import Upgrades from './shop-components/Upgrades.vue';
+import Weapons from './shop-components/Weapons.vue';
 </script>
 <template>
     <article class="shop">
