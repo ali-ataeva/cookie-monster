@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { useCounterStore } from '../../store';
+import { useCounterStore, useUpgradesStore } from '../../store';
 
 const storeCounter = useCounterStore();
+const upgradesStore = useUpgradesStore();
 </script>
 <template>
     <section class="upgrades">
