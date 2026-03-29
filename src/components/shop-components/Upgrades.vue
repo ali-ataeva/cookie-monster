@@ -18,6 +18,7 @@ let upgradesList = ref([
 
 </script>
 <template>
+  <div class="wrapper">
     <section class="upgrades">
           <p>upgrades</p>
           <ul>
@@ -26,8 +27,14 @@ let upgradesList = ref([
             </li>
           </ul>
         </section>
+  </div>
 </template>
 <style scoped>
+  .wrapper{
+    height: calc(100vh - 8rem - 8px);
+    overflow-y: scroll;
+    width: 100%;
+  }
   li {
     list-style-type: none;
     width: 100%;
@@ -40,7 +47,6 @@ let upgradesList = ref([
   }
   .upgrades{
     width: 100%;
-    border-bottom: var(--neutral-400) solid 8px;
   }
   .upgrades ul{
     display: flex;
@@ -51,7 +57,7 @@ let upgradesList = ref([
     gap: 1.4rem;
   }
   
-  article> section > p{
+  section > p{
     background-color: var(--secondary-500);
     width: fit-content;
     padding: 0 8px;

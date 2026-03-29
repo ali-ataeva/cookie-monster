@@ -17,6 +17,7 @@ import Weapons from './shop-components/Weapons.vue';
     background-color: var(--neutral-400);
     z-index: 2;
     box-shadow: -3px 0px 6px 0px rgb(0, 0, 0);
+    border-bottom: var(--neutral-400) solid 8px;
   }
   @media screen and (max-width: 750px) {
     article{
