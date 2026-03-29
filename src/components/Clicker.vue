@@ -1,16 +1,38 @@
 <script lang="ts" setup>
-import { ref } from "vue";
-const badge = ref<string>("./achievement-cup.png")
+import { computed, ref } from "vue";
+import { useCounterStore } from "../store";
 const coin = ref<string>("./coin.png")
+
+const storeCounter = useCounterStore();
+function increaseCount() {
+  storeCounter.count++;
+}
+
+//Based on counter value assign display a players level
+const defaultLevel = { name: "Recruit", icon: "./achievement-cup.png" };
+const levels = [
+  { min: 500_000_000, name: "Living Legend", icon: "./achievement-cup.png" },
+  { min: 250_000_000, name: "Commander", icon: "./achievement-cup.png" },
+  { min: 100_000_000, name: "Black Ops Agent", icon: "./achievement-cup.png" },
+  { min: 25_000_000, name: "Strike Specialist", icon: "./achievement-cup.png" },
+  { min: 2_500_000, name: "Saboteur", icon: "./achievement-cup.png" },
+  { min: 100_000, name: "Bombardier", icon: "./achievement-cup.png" },
+  { min: 50_000, name: "Demolitionist", icon: "./achievement-cup.png" },
+];
+
+const level = computed(() => {
+  return levels.find((entry) => storeCounter.count > entry.min) ?? defaultLevel;
+});
+
 </script>
 <template>
     <article class="clicker">
         <div>
-          <img class="achievement-badge" :src="badge" alt="">
-          <p>Cadet</p>
+          <img class="achievement-badge" :src="level.icon" alt="">
+          <p>{{ level.name }}</p>
         </div>
-        <p class="coin-counter">1000 Coins</p>
-        <button class="click-coin">
+        <p class="coin-counter">{{ storeCounter.count }} Coins</p>
+        <button @click="increaseCount()" class="click-coin">
           <img :src="coin" alt="game currency coin">
         </button>
       </article>

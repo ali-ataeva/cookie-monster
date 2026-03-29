@@ -48,7 +48,6 @@
   }
   .weapons{
     width: 50%;
-    border-bottom: var(--neutral-400) solid 8px;
   }
   .weapons ul{
     display: flex;
