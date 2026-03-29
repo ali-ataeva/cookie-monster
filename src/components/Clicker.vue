@@ -11,13 +11,13 @@ function increaseCount() {
 //Based on counter value assign display a players level
 const defaultLevel = { name: "Recruit", icon: "./achievement-cup.png" };
 const levels = [
-  { min: 500000000, name: "Living Legend", icon: "./achievement-cup.png" },
-  { min: 250000000, name: "Commander", icon: "./achievement-cup.png" },
-  { min: 100000000, name: "Black Ops Agent", icon: "./achievement-cup.png" },
-  { min: 25000000, name: "Strike Specialist", icon: "./achievement-cup.png" },
-  { min: 2500000, name: "Saboteur", icon: "./achievement-cup.png" },
-  { min: 100000, name: "Bombardier", icon: "./achievement-cup.png" },
-  { min: 50000, name: "Demolitionist", icon: "./achievement-cup.png" },
+  { min: 500_000_000, name: "Living Legend", icon: "./achievement-cup.png" },
+  { min: 250_000_000, name: "Commander", icon: "./achievement-cup.png" },
+  { min: 100_000_000, name: "Black Ops Agent", icon: "./achievement-cup.png" },
+  { min: 25_000_000, name: "Strike Specialist", icon: "./achievement-cup.png" },
+  { min: 2_500_000, name: "Saboteur", icon: "./achievement-cup.png" },
+  { min: 100_000, name: "Bombardier", icon: "./achievement-cup.png" },
+  { min: 50_000, name: "Demolitionist", icon: "./achievement-cup.png" },
 ];
 
 const level = computed(() => {
