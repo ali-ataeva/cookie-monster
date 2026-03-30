@@ -1,31 +1,49 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
+import WeaponCard from './WeaponCard.vue';
+
+let weaponsList = ref([
+  { id: 1, name: "Iron Dome", image: "/weapon-1.png", price: "1 000", unlockAt: 0, clicks: 0.25, amount: 0, visibility: false},
+  { id: 2, name: "Little Boy", image: "/weapon-2.png", price: "100 000", unlockAt: 1000, clicks: 0.50, amount: 0, visibility: false },
+  { id: 3, name: "Fat Man", image: "/weapon-3.png", price: "1 000 000", unlockAt: 100000, clicks: 1, amount: 0, visibility: false },
+  { id: 4, name: "Tsar Bomba", image: "/weapon-4.png", price: "10 000 000", unlockAt: 1000000, clicks: 4, amount: 0, visibility: false },
+  { id: 5, name: "Hydrogen Bomb", image: "/weapon-5.png", price: "100 000 000", unlockAt: 100000000, clicks: 8, amount: 0, visibility: false },
+]);
+
+function makeVisible(click: PointerEvent) {
+    const target = click.target as HTMLElement | null;
+    if (!target) return;
+    const weapon = weaponsList.value.find((entry) => entry.id === Number(target.id));
+    if (!weapon) return
+    weapon.visibility = true;
+}
 
 </script>
 <template>
     <section class="weapons">
           <p>weapons</p>
           <ul>
-            <li>
-              <img src="/weapon-1.png" alt="">
-            </li>
-            <li>
-              <img src="/weapon-2.png" alt="">
-            </li>
-            <li>
-              <img src="/weapon-3.png" alt="">
-            </li>
-            <li>
-              <img src="/weapon-4.png" alt="">
-            </li>
-            <li>
-              <img src="/weapon-5.png" alt="">
+            <li v-for="weapon in weaponsList" >
+              <div class="click-capture" :id="String(weapon.id)" @click="makeVisible"></div>
+              <WeaponCard :weapon/>
+              <img :src="weapon.image" alt="">
             </li>
           </ul>
     </section>
 </template>
 <style scoped>
-    li {
+  li {
     list-style-type: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .click-capture{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
   }
   .shop section{
     background-color: var(--neutral-600);
@@ -66,7 +84,7 @@
     border-radius: 1rem;
     justify-content: center;
     align-items: center;
-    padding: 0.6rem 1.5rem;
+    padding: 1rem 1.5rem;
     box-shadow: inset 0 0 12px 0 #B88FFF, 0 0 5.5px 0 var(--primary-500);
   }
   .weapons img{

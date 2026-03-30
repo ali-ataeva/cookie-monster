@@ -20,21 +20,27 @@ const { upgrade } = defineProps<{
     upgrade: UpgradeType
 }>()
 
-const visible = computed(() => {
+const visibleState = computed(() => {
     return storeCounter.count >= upgrade.unlockAt ? true : false
+}); 
+const visibleStyle = computed(() => {
+    return storeCounter.count >= upgrade.unlockAt ? 1 : 0
 }); 
 
 let clicks = ref(0);
 setInterval(() => 
     {storeCounter.count += clicks.value}, 1000
 )
+let price = Number(upgrade.price.replace(/\s/g, ""));
 
-function upgraded() {
-    if (!visible){
+let purchasable = computed(() => {
+    return (price > storeCounter.count)? false : true
+});
+function buyUpgrade() {
+    if (!visibleState.value){
         return;
     }
-    let price = Number(upgrade.price.replace(" ", ""));
-    if (price > storeCounter.count) {
+    if (!purchasable.value) {
         return;
     }
     clicks.value += upgrade.clicks;
@@ -46,14 +52,14 @@ function upgraded() {
 //add function for automatic clicking based on the clicks count
 </script>
 <template>
-    <section class="card" @click="upgraded()">
+    <section class="card" @click="buyUpgrade()">
         <div class="main-content" >
-            <img :src="(visible ? upgrade.image : placeholderImage)" alt="">
+            <img :src="(visibleState ? upgrade.image : placeholderImage)" alt="">
             <div class="name-cost">
-                <p>{{ (visible ? upgrade.name : placeholderText) }}</p>
+                <p>{{ (visibleState ? upgrade.name : placeholderText) }}</p>
                 <div class="cost">
                     <img src="/coin.png" alt="game currency coin">
-                    <p>{{(visible ? upgrade.price : placeholderText)}}</p>
+                    <p>{{(visibleState ? upgrade.price : placeholderText)}}</p>
                 </div>
             </div>
         </div>
@@ -72,6 +78,7 @@ function upgraded() {
     align-items: center;
     padding: 0.6rem 1.5rem;
     box-shadow: inset 0 0 12px 0 #FFDC8F, 0 0 5.5px 0 var(--secondary-500);
+    filter: saturate(v-bind(visibleStyle));
 
   }
   .upgrades img{
