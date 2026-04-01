@@ -1,5 +1,2 @@
-# Vue 3 + TypeScript + Vite
-
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Strike
+Vybrala jsem si téma strategické klikací hry s názvem Strike, která kombinuje prvky clicker hry a geografických znalostí. V základní části hráč získává herní měnu opakovaným klikáním na hlavní objekt. Za získané mince si může nakupovat vylepšení (upgrady), která automatizují klikání a zvyšují celkový výdělek. Herní měnu lze také využít k nákupu bomb. Po zakoupení bomby hráč klikne na tlačítko Launch, čímž se aktivuje vedlejší mise. Poté se náhodně vygeneruje země a hráč má za úkol na slepé mapě co nejpřesněji označit její hlavní město. Výše odměny závisí na přesnosti zásahu i na úrovni použité bomby. Odměnou je zvýšení efektivity klikání (například násobení hodnoty jednoho kliknutí), čímž se propojuje geografická část hry s hlavní clicker mechanikou.
