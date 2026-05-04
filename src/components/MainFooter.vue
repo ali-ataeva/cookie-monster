@@ -7,8 +7,10 @@
         <p>Won efficiency display</p>
       </section>
       
-      <section class="launch-button">
-        <button>Launch</button>
+      <section class="button-wrap">
+          <router-link :to="{ name: 'geo'}" class="button">
+            Launch
+          </router-link>
       </section>
     </footer>
 </template>
@@ -22,7 +24,7 @@
     justify-content: space-between;
     align-items: center;
   }
-  footer button{
+  footer .button{
     background-color: var(--primary-900);
     color: var(--neutral-100);
     border: none;
@@ -32,6 +34,8 @@
     margin: 1.2rem;
     padding: 0.5rem 0;
     font-size: 1.6em;
+    text-align: center;
+    text-decoration: none;
   }
   .won-efficiency{
     min-width: 60%;
@@ -39,7 +43,7 @@
   .won-efficiency p{
     padding: 0 1rem;
   }
-  .launch-button{
+  .button-wrap{
     width: 100%;
     height: 100%;
     background-color: var(--neutral-600);
@@ -63,7 +67,7 @@
       justify-content: center;
       align-items: center;
     }
-    .launch-button{
+    .button-wrap{
       border-top: var(--neutral-400) solid 8px;
     }
 
