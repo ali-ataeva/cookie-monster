@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useCounterStore } from '../../store';
+import { useCounterStore } from '../../stores/clickerStore';
 
 const storeCounter = useCounterStore();
 type WeaponType = { 

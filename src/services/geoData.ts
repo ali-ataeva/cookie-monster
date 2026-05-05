@@ -7,6 +7,7 @@ import type {
 } from "../types";
 
 export async function getGeoData() {
+  return;
   const coords = localStorage.getItem("coords");
   const outlines = localStorage.getItem("outlines");
   const countries = localStorage.getItem("countries");
