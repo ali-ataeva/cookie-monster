@@ -3,7 +3,7 @@ import { RouterView } from 'vue-router';
 import { onMounted } from 'vue';
 import { getGeoData } from './services/geoData';
 
-onMounted(async () => {
+onMounted(async() => {
   const geoData = await getGeoData()
 })
 </script>

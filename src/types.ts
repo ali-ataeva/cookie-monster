@@ -33,3 +33,29 @@ export type CountryOutlinesType = {
     coordinates: string;
   };
 };
+export type ResponseCoordsType = {
+  totalResultsCount: number;
+  geonames: CapitalCoordsType[];
+};
+export type CapitalCoordsType = {
+  adminCode1: string;
+  lng: string;
+  geonameId: number;
+  toponymName: string;
+  countryId: string;
+  fcl: string;
+  population: number;
+  countryCode: string;
+  name: string;
+  fclName: string;
+  adminCodes1: object;
+  countryName: string;
+  fcodeName: string;
+  adminName1: string;
+  lat: string;
+  fcode: string;
+};
+export type finalCoordsType = {
+  lng: number;
+  lat: number;
+};
