@@ -10,19 +10,26 @@ const mapEl = ref<HTMLDivElement>();
 onMounted (() => {
     const i = Math.floor(Math.random() * geoStore.outlines.length)
     const country = geoStore.outlines[i]
-
+    const capital = geoStore.coords[i]
     if(!mapEl.value) return;
     const map = L.map(mapEl.value).setView([0,0],2)
 
     if(!country) return;
+
     const layer = L.geoJSON(country.geometry).addTo(map)
     map.fitBounds(layer.getBounds())
+    
+    if(!capital) return;
+    map.on("click", (e) => {
+        const distanceRaw = map.distance(e.latlng, [capital.lat, capital.lng])
+        const distance = Math.round(distanceRaw)
+        console.log(`Spletla jses o ${distance/1000} km`)
+    })
 }
 )
 </script>
 
 <template>
-    <p>Ahoj</p>
     <div ref="mapEl" class="map"></div>
 </template>
 
