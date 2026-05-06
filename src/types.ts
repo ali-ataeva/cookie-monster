@@ -1,3 +1,5 @@
+import type { MultiPolygon, Polygon } from "geojson";
+
 export type CountriesResponseType = {
   name: {
     common: string;
@@ -28,10 +30,7 @@ export type CountryOutlinesType = {
     ["ISO3166-1-Alpha-3"]: string;
     ["ISO3166-1-Alpha-2"]: string;
   };
-  geometry: {
-    type: string;
-    coordinates: string;
-  };
+  geometry: Polygon | MultiPolygon;
 };
 export type ResponseCoordsType = {
   totalResultsCount: number;
