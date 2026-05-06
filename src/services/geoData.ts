@@ -1,3 +1,4 @@
+import { get, set } from "idb-keyval";
 import type {
   CountriesResponseType,
   CountryOutlinesType,
@@ -7,15 +8,15 @@ import type {
 } from "../types";
 
 export async function getGeoData() {
-  const coords = localStorage.getItem("coords");
-  const outlines = localStorage.getItem("outlines");
-  const countries = localStorage.getItem("countries");
+  const coords = await get("coords");
+  const outlines = await get("outlines");
+  const countries = await get("countries");
 
   // if the data is already in local storage parse it, if not fetch
   if (coords && outlines && countries) {
-    let finalCoords = JSON.parse(coords);
-    let finalOutlines = JSON.parse(outlines);
-    let finalCountries = JSON.parse(countries);
+    let finalCoords = coords;
+    let finalOutlines = outlines;
+    let finalCountries = countries;
     return { finalCoords, finalOutlines, finalCountries };
   } else {
     //all country names and capitals
@@ -100,9 +101,9 @@ export async function getGeoData() {
     for (const item of finalCountries) {
       await getCoords(item);
     }
-    localStorage.setItem("coords", JSON.stringify(finalCoords));
-    localStorage.setItem("outlines", JSON.stringify(finalOutlines));
-    localStorage.setItem("countries", JSON.stringify(finalCountries));
+    await set("coords", finalCoords);
+    await set("outlines", finalOutlines);
+    await set("countries", finalCountries);
     return { finalCoords, finalOutlines, finalCountries };
   }
 }
