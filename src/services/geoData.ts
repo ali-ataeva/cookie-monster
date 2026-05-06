@@ -90,6 +90,7 @@ export async function getGeoData() {
           const justCoords = {
             lat: Number(singleCapital.lat),
             lng: Number(singleCapital.lng),
+            countryCode: singleCapital.countryCode,
           };
           finalCoords.push(justCoords);
         }

@@ -57,4 +57,5 @@ export type CapitalCoordsType = {
 export type finalCoordsType = {
   lng: number;
   lat: number;
+  countryCode: string;
 };
