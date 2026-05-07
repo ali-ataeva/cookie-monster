@@ -39,7 +39,7 @@ function buyUpgrade() {
     if (!canPurchase.value) return;
     weapon.amount = weapon.amount + 1;
     storeCounter.count -= price.value;
-    bombStore.current = weapon
+    bombStore.setBomb(weapon)
 }
 
 </script>
@@ -55,7 +55,7 @@ function buyUpgrade() {
                 </div>
                 <p v-if="!visibleState">You have to reach {{weapon.unlockAt}} coins to unlock this weapon</p>
                 <p v-else-if="bombStore.current">You can only carry one bomb at a time. Use it first.</p>
-                <p v-else>You can carry only one bomb at a time — choose wisely.</p>
+                <p v-else>You can carry only one bomb at a time! Choose wisely.</p>
             </div>
             <button @click="buyUpgrade" :disabled="!canPurchase">
                 Purchase
