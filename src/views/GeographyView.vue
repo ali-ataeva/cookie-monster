@@ -3,6 +3,7 @@ import { useGeoDataStore } from '../stores/geoDataStore';
 import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 import { onMounted, ref } from 'vue';
+import { router } from '../router';
 
 const Purple = "#7a41dc"
 const Yellow = "#FFC64A"
@@ -34,6 +35,11 @@ const confirm = () => {
     distance.value = Math.round(distanceRaw / 1000)
     confirmed.value = true
     localStorage.removeItem("currentCountry")
+    //TODO: add function for counting and saving score
+}
+
+const redirectToClicker = () => {
+    router.push({name : "home"})
 }
 
 onMounted (() => {
@@ -89,19 +95,20 @@ onMounted (() => {
     <div ref="mapEl" class="map"></div>
 
     <section v-if="guess && !confirmed" class="confirm-popup">
-        <p>Myslíš si, že tohle je optimální trajektorie?</p>
+        <p>Is this your final answer?</p>
         <section class="button-wrap">
             <button @click="reset" class="reset">
-                Zkusit znovu
+                Try again
             </button>
             <button @click="confirm" class="confirm">
-                Podtvrdit
+                Confirm
             </button>
         </section>
         
     </section>
     <section v-if="confirmed" class="result">
-        <p>Spletl/a ses o {{ distance }} km</p>
+        <p>You missed by {{ distance }} km</p>
+        <button @click="redirectToClicker" class="redirect">Back to clicker</button>
     </section>
 </template>
 
@@ -140,7 +147,7 @@ onMounted (() => {
         padding: 1rem 1.5rem;
         cursor: pointer;
     }
-    .reset{
+    .reset, .redirect{
         border: var(--primary-500) 2px solid;
         color: var(--primary-900);
         box-shadow: inset 0 0 12px 0 #B88FFF, 0 0 5.5px 0 var(--primary-500);
