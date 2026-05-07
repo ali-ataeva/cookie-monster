@@ -59,3 +59,7 @@ export type finalCoordsType = {
   lat: number;
   countryCode: string;
 };
+export type bombType = {
+  name: string;
+  power: number;
+};
