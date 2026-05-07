@@ -16,6 +16,15 @@ let upgradesList = ref([
   { id: 10, name: "Nuclear Warhead", image: "/upgrade-placeholder.png", price: "10 000 000", unlockAt: 1000000, clicks: 1000, amount: 0 },
 ]);
 
+const storedAmounts = localStorage.getItem("upgradeAmounts");
+if (storedAmounts) {
+  const amounts: Record<number, number> = JSON.parse(storedAmounts);
+  upgradesList.value.forEach((u) => {
+    const saved = amounts[u.id];
+    if (saved !== undefined) u.amount = saved;
+  });
+}
+
 </script>
 <template>
   <div class="wrapper">

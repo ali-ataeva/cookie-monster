@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useCounterStore } from '../../stores/clickerStore';
 
 const storeCounter = useCounterStore();
@@ -27,7 +27,7 @@ const visibleStyle = computed(() => {
     return storeCounter.count >= upgrade.unlockAt ? 1 : 0
 }); 
 
-let clicks = ref(0);
+const clicks = computed(() => upgrade.amount * upgrade.clicks);
 setInterval(() =>
     {storeCounter.addCount(clicks.value)}, 1000
 )
@@ -36,6 +36,14 @@ let price = Number(upgrade.price.replace(/\s/g, ""));
 let purchasable = computed(() => {
     return (price > storeCounter.count)? false : true
 });
+
+function saveAmounts() {
+    const stored = localStorage.getItem("upgradeAmounts");
+    const amounts: Record<number, number> = stored ? JSON.parse(stored) : {};
+    amounts[upgrade.id] = upgrade.amount;
+    localStorage.setItem("upgradeAmounts", JSON.stringify(amounts));
+}
+
 function buyUpgrade() {
     if (!visibleState.value){
         return;
@@ -43,9 +51,9 @@ function buyUpgrade() {
     if (!purchasable.value) {
         return;
     }
-    clicks.value += upgrade.clicks;
     upgrade.amount = upgrade.amount + 1;
     storeCounter.subtractCount(price);
+    saveAmounts();
 }
 
 //add function for automatic clicking based on the clicks count
