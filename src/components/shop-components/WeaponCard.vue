@@ -23,21 +23,23 @@ let visibleState = computed(() => {
 
 let price = ref(Number(weapon.price.replace(/\s/g, "")));
 
-let purchasableStyle = computed(() => {
-    return (price.value > storeCounter.count)? 0 : 1
-});
-
 let purchasableState = computed(() => {
     return (price.value > storeCounter.count)? false : true
 });
 
+let canPurchase = computed(() => {
+    return visibleState.value && purchasableState.value && bombStore.current === null
+});
+
+let purchasableStyle = computed(() => {
+    return canPurchase.value ? 1 : 0
+});
+
 function buyUpgrade() {
-    if (!visibleState.value) return;
-    if (!purchasableState.value) return;
-    if (bombStore.current !== null) return
-    weapon.amount = weapon.amount + 1; 
-    storeCounter.count -= price.value; 
-    bombStore.current = weapon  
+    if (!canPurchase.value) return;
+    weapon.amount = weapon.amount + 1;
+    storeCounter.count -= price.value;
+    bombStore.current = weapon
 }
 
 </script>
@@ -51,10 +53,11 @@ function buyUpgrade() {
                     <img src="/coin.png" alt="game currency coin">
                     <p>{{ weapon.price }}</p>
                 </div>
-                <p v-if="visibleState" >You have {{ weapon.amount }} pcs of this weapon purchased</p>
-                <p v-else> You have to reach {{weapon.unlockAt}} coins to unlock this weapon</p>
+                <p v-if="!visibleState">You have to reach {{weapon.unlockAt}} coins to unlock this weapon</p>
+                <p v-else-if="bombStore.current">You can only carry one bomb at a time. Use it first.</p>
+                <p v-else>You can carry only one bomb at a time — choose wisely.</p>
             </div>
-            <button @click="buyUpgrade">
+            <button @click="buyUpgrade" :disabled="!canPurchase">
                 Purchase
             </button>
         </section>
@@ -104,6 +107,9 @@ function buyUpgrade() {
     font-size: 1.6em;
     margin-top: 1em;
     filter: saturate(v-bind(purchasableStyle));
-
+  }
+  button:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 </style>

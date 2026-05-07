@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import WeaponCard from './WeaponCard.vue';
+import { useBombStore } from '../../stores/bombStore';
+
+const bombStore = useBombStore();
 
 let weaponsList = ref([
   { id: 1, name: "Iron Dome", image: "/weapon-1.png", price: "1 000", unlockAt: 0, clicks: 1, amount: 0, visibility: false},
@@ -23,7 +26,7 @@ function makeVisible(click: PointerEvent) {
     <section class="weapons">
           <p>weapons</p>
           <ul>
-            <li v-for="weapon in weaponsList" >
+            <li v-for="weapon in weaponsList" :class="{ inactive: bombStore.current && bombStore.current.id !== weapon.id }">
               <div class="click-capture" :id="String(weapon.id)" @click="makeVisible"></div>
               <WeaponCard :weapon/>
               <img :src="weapon.image" alt="">
@@ -86,6 +89,10 @@ function makeVisible(click: PointerEvent) {
     align-items: center;
     padding: 1rem 1.5rem;
     box-shadow: inset 0 0 12px 0 #B88FFF, 0 0 5.5px 0 var(--primary-500);
+  }
+  .weapons li.inactive{
+    box-shadow: inset 0 0 12px 0 rgba(150, 150, 150, 0.4), 0 0 5.5px 0 rgba(100, 100, 100, 0.3);
+    opacity: 0.6;
   }
   .weapons img{
     width: 5rem;
