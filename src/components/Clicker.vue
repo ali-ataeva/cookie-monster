@@ -5,7 +5,7 @@ const coin = ref<string>("./coin.png")
 
 const storeCounter = useCounterStore();
 function increaseCount() {
-  storeCounter.count++;
+  storeCounter.addCount(1);
 }
 
 //Based on counter value assign display a players level

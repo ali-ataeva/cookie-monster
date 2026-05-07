@@ -28,8 +28,8 @@ const visibleStyle = computed(() => {
 }); 
 
 let clicks = ref(0);
-setInterval(() => 
-    {storeCounter.count += clicks.value}, 1000
+setInterval(() =>
+    {storeCounter.addCount(clicks.value)}, 1000
 )
 let price = Number(upgrade.price.replace(/\s/g, ""));
 
@@ -44,9 +44,8 @@ function buyUpgrade() {
         return;
     }
     clicks.value += upgrade.clicks;
-    upgrade.amount = upgrade.amount + 1; 
-    storeCounter.count -= price;
-    
+    upgrade.amount = upgrade.amount + 1;
+    storeCounter.subtractCount(price);
 }
 
 //add function for automatic clicking based on the clicks count

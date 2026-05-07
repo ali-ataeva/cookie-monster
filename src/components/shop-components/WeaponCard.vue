@@ -38,7 +38,7 @@ let purchasableStyle = computed(() => {
 function buyUpgrade() {
     if (!canPurchase.value) return;
     weapon.amount = weapon.amount + 1;
-    storeCounter.count -= price.value;
+    storeCounter.subtractCount(price.value);
     bombStore.setBomb(weapon)
 }
 
