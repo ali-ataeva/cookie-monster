@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useBombStore } from '../stores/bombStore';
+import { useRewardStore } from '../stores/rewardStore';
 
 const bombStore = useBombStore();
+const rewardStore = useRewardStore();
 const showPopup = ref(false);
 
 function handleClick(e: Event) {
@@ -11,11 +13,26 @@ function handleClick(e: Event) {
     showPopup.value = true;
   }
 }
+
+function formatTime(expiresAt: number, now: number) {
+  const totalSec = Math.max(0, Math.ceil((expiresAt - now) / 1000));
+  const min = Math.floor(totalSec / 60);
+  const sec = totalSec % 60;
+  return `${min}:${sec.toString().padStart(2, '0')}`;
+}
 </script>
 <template>
     <footer>
       <section class="won-efficiency">
-        <p>Won efficiency display</p>
+        <p v-if="rewardStore.activeMultipliers.length === 0" class="empty">
+          No active multipliers
+        </p>
+        <ul v-else class="multipliers">
+          <li v-for="m in rewardStore.activeMultipliers" :key="m.expiresAt">
+            <span class="value">{{ m.value }}x</span>
+            <span class="time">{{ formatTime(m.expiresAt, rewardStore.now) }}</span>
+          </li>
+        </ul>
       </section>
 
       <section class="button-wrap">
@@ -98,9 +115,37 @@ function handleClick(e: Event) {
   }
   .won-efficiency{
     min-width: 60%;
-  }
-  .won-efficiency p{
     padding: 0 1rem;
+  }
+  .won-efficiency .empty{
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+  }
+  .multipliers{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .multipliers li{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-900);
+    padding: 0.3rem 0.8rem;
+    border-radius: 10rem;
+    box-shadow: inset 0 -3px 8px 0 #B88FFF, 0 0 6px 0 var(--primary-500);
+    font-size: 0.95em;
+  }
+  .multipliers .value{
+    font-weight: bold;
+    color: var(--neutral-100);
+  }
+  .multipliers .time{
+    color: rgba(255, 255, 255, 0.7);
+    font-variant-numeric: tabular-nums;
   }
   .button-wrap{
     width: 100%;

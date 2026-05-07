@@ -1,11 +1,13 @@
 <script lang="ts" setup>
 import { computed, ref } from "vue";
 import { useCounterStore } from "../stores/clickerStore";
+import { useRewardStore } from "../stores/rewardStore";
 const coin = ref<string>("./coin.png")
 
 const storeCounter = useCounterStore();
+const rewardStore = useRewardStore();
 function increaseCount() {
-  storeCounter.addCount(1);
+  storeCounter.addCount(rewardStore.totalMultiplier);
 }
 
 //Based on counter value assign display a players level

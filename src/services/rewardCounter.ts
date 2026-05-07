@@ -24,7 +24,9 @@ export function countGeoReward(distance: number, bomb: WeaponType) {
   } else {
     message = `Yikes. We had to invent a new unit just for this.`;
   }
-  rewardStore.setMultiplier(clickMultiplier, minutes);
+  if (clickMultiplier > 0) {
+    rewardStore.addMultiplier(clickMultiplier, minutes);
+  }
   bombStore.clearBomb();
   return message;
 }
