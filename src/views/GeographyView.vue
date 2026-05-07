@@ -5,11 +5,12 @@ import L from "leaflet"
 import { onMounted, ref } from 'vue';
 
 const Purple = "#7a41dc"
+const Yellow = "#FFC64A"
 const geoStore = useGeoDataStore();
 const mapEl = ref<HTMLDivElement>();
 const guess = ref<{lat: number, lng: number} | null>(null)
 const confirmed = ref(false)
-let marker: L.Marker | null = null;
+let marker: L.CircleMarker | null = null;
 let map: L.Map | null = null;
 const capital = ref()
 const distance = ref()
@@ -72,7 +73,12 @@ onMounted (() => {
         if (confirmed.value) return;
         if (marker) return;
         if (!map) return;
-        marker = L.marker(e.latlng).addTo(map);
+        marker = L.circleMarker(e.latlng, {
+            radius : 8,
+            color : Yellow,
+            fillOpacity : 1,
+            weight : 2
+        }).addTo(map);
         guess.value = { lat: e.latlng.lat, lng: e.latlng.lng }
     })
 }
