@@ -1,17 +1,11 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { useCounterStore } from '../../stores/clickerStore';
+import type { WeaponType } from '../../types';
+import { useBombStore } from '../../stores/bombStore';
 
 const storeCounter = useCounterStore();
-type WeaponType = { 
-  id: number; 
-  name: string; 
-  image: string; 
-  price: string; 
-  unlockAt: number;
-  amount: number; 
-  visibility: boolean;
-}
+const bombStore = useBombStore()
 
 const { weapon } = defineProps<{
     weapon: WeaponType
@@ -38,14 +32,12 @@ let purchasableState = computed(() => {
 });
 
 function buyUpgrade() {
-    if (!visibleState.value){
-        return;
-    }
-    if (!purchasableState.value) {
-        return;
-    }
+    if (!visibleState.value) return;
+    if (!purchasableState.value) return;
+    if (bombStore.current !== null) return
     weapon.amount = weapon.amount + 1; 
-    storeCounter.count -= price.value;   
+    storeCounter.count -= price.value; 
+    bombStore.current = weapon  
 }
 
 </script>
@@ -101,7 +93,7 @@ function buyUpgrade() {
     height: auto;
   }
   button{
-
+    cursor: pointer;
     background-color: var(--primary-900);
     color: var(--neutral-100);
     border: none;

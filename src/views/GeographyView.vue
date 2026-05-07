@@ -4,10 +4,13 @@ import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 import { onMounted, ref } from 'vue';
 import { router } from '../router';
+import { countGeoReward } from '../services/rewardCounter';
+import { useBombStore } from '../stores/bombStore';
 
 const Purple = "#7a41dc"
 const Yellow = "#FFC64A"
 const geoStore = useGeoDataStore();
+const bombStore = useBombStore()
 const mapEl = ref<HTMLDivElement>();
 const guess = ref<{lat: number, lng: number} | null>(null)
 const confirmed = ref(false)
@@ -15,6 +18,7 @@ let marker: L.CircleMarker | null = null;
 let map: L.Map | null = null;
 const capital = ref()
 const distance = ref()
+let message = "";
 
 const reset = () => {
     if (marker) {
@@ -35,7 +39,8 @@ const confirm = () => {
     distance.value = Math.round(distanceRaw / 1000)
     confirmed.value = true
     localStorage.removeItem("currentCountry")
-    //TODO: add function for counting and saving score
+    if (!bombStore.current) return
+    message = countGeoReward(distance.value, bombStore.current)
 }
 
 const redirectToClicker = () => {
@@ -107,7 +112,7 @@ onMounted (() => {
         
     </section>
     <section v-if="confirmed" class="result">
-        <p>You missed by {{ distance }} km</p>
+        <p>{{ message }}</p>
         <button @click="redirectToClicker" class="redirect">Back to clicker</button>
     </section>
 </template>

@@ -3,11 +3,11 @@ import { ref } from 'vue';
 import WeaponCard from './WeaponCard.vue';
 
 let weaponsList = ref([
-  { id: 1, name: "Iron Dome", image: "/weapon-1.png", price: "1 000", unlockAt: 0, clicks: 0.25, amount: 0, visibility: false},
-  { id: 2, name: "Little Boy", image: "/weapon-2.png", price: "100 000", unlockAt: 1000, clicks: 0.50, amount: 0, visibility: false },
-  { id: 3, name: "Fat Man", image: "/weapon-3.png", price: "1 000 000", unlockAt: 100000, clicks: 1, amount: 0, visibility: false },
-  { id: 4, name: "Tsar Bomba", image: "/weapon-4.png", price: "10 000 000", unlockAt: 1000000, clicks: 4, amount: 0, visibility: false },
-  { id: 5, name: "Hydrogen Bomb", image: "/weapon-5.png", price: "100 000 000", unlockAt: 100000000, clicks: 8, amount: 0, visibility: false },
+  { id: 1, name: "Iron Dome", image: "/weapon-1.png", price: "1 000", unlockAt: 0, clicks: 1, amount: 0, visibility: false},
+  { id: 2, name: "Little Boy", image: "/weapon-2.png", price: "100 000", unlockAt: 1000, clicks: 2, amount: 0, visibility: false},
+  { id: 3, name: "Fat Man", image: "/weapon-3.png", price: "1 000 000", unlockAt: 100000, clicks: 3, amount: 0, visibility: false},
+  { id: 4, name: "Tsar Bomba", image: "/weapon-4.png", price: "10 000 000", unlockAt: 1000000, clicks: 5, amount: 0, visibility: false},
+  { id: 5, name: "Hydrogen Bomb", image: "/weapon-5.png", price: "100 000 000", unlockAt: 100000000, clicks: 8, amount: 0, visibility: false},
 ]);
 
 function makeVisible(click: PointerEvent) {

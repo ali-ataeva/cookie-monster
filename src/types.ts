@@ -59,7 +59,14 @@ export type finalCoordsType = {
   lat: number;
   countryCode: string;
 };
-export type bombType = {
+
+export type WeaponType = {
+  id: number;
   name: string;
-  power: number;
+  image: string;
+  price: string;
+  unlockAt: number;
+  amount: number;
+  clicks: number;
+  visibility: boolean;
 };
