@@ -98,9 +98,4 @@ function makeVisible(click: PointerEvent) {
     width: 5rem;
     height: auto;
   }
-  @media screen and (max-width: 750px) {
-    article{
-      height: unset;
-    }
-  }
 </style>

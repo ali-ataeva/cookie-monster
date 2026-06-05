@@ -127,9 +127,4 @@ function buyUpgrade() {
     align-items: center;
     width: 100%;
   }
-  @media screen and (max-width: 750px) {
-    article{
-      height: unset;
-    }
-  }
 </style>

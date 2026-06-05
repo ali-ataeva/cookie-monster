@@ -82,7 +82,7 @@ export async function getGeoData() {
     async function getCoords(item: CountriesResponseType) {
       try {
         const coordsResponse = await fetch(
-          `http://api.geonames.org/searchJSON?q=${item.capital[0]}&maxRows=1&username=alisaataeva`,
+          `https://secure.geonames.org/searchJSON?q=${encodeURIComponent(item.capital[0] ?? "")}&maxRows=1&username=alisaataeva`,
         );
         const allData: ResponseCoordsType = await coordsResponse.json();
         const singleCapital = allData.geonames[0];

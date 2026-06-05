@@ -82,14 +82,18 @@ onMounted (() => {
     if(!capital.value) return;
     map.on("click", (e) => {
         if (confirmed.value) return;
-        if (marker) return;
         if (!map) return;
-        marker = L.circleMarker(e.latlng, {
-            radius : 8,
-            color : Yellow,
-            fillOpacity : 1,
-            weight : 2
-        }).addTo(map);
+        // Reposition the existing pin instead of locking it after the first click.
+        if (marker) {
+            marker.setLatLng(e.latlng);
+        } else {
+            marker = L.circleMarker(e.latlng, {
+                radius : 8,
+                color : Yellow,
+                fillOpacity : 1,
+                weight : 2
+            }).addTo(map);
+        }
         guess.value = { lat: e.latlng.lat, lng: e.latlng.lng }
     })
 }
@@ -100,7 +104,7 @@ onMounted (() => {
     <div ref="mapEl" class="map"></div>
 
     <section v-if="guess && !confirmed" class="confirm-popup">
-        <p>Is this your final answer?</p>
+        <p>Click the map to move your pin, or confirm your guess.</p>
         <section class="button-wrap">
             <button @click="reset" class="reset">
                 Try again
@@ -119,28 +123,27 @@ onMounted (() => {
 
 <style scoped>
     .map{
-        height: 100vh; 
+        height: 100vh;
+        height: 100dvh;
         width: 100%;
     }
     .confirm-popup, .result {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 30px;
+        left: 50%;
+        transform: translate(-50%, 0);
         background-color: var(--neutral-100);
         color: var(--neutral-900);
         padding: 1rem;
         border-radius: 1rem;
         box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         z-index: 800; /* Tohle nepsala llmka, kvuli knihovne je potreba mit takhle vysoky z-index :( */
-        top: 30px;
-        left: 50%;
-        transform: translate(-50%, 0);
-        width: 40rem;
+        width: min(40rem, calc(100vw - 2rem));
+        box-sizing: border-box;
         text-align: center;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        
     }
     .button-wrap{
         display: flex;

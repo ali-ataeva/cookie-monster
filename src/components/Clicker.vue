@@ -71,9 +71,12 @@ const level = computed(() => {
   }
   article{
     height: calc(100vh - 8rem);
+    height: calc(100dvh - 8rem);
   }
   .coin-counter{
     font-size: 3em;
+    word-break: break-all;
+    text-align: center;
   }
   @media screen and (max-width: 1200px) {
   .clicker{
@@ -85,10 +88,13 @@ const level = computed(() => {
       height: unset;
     }
     .click-coin{
-      width: 18rem;
+      width: min(18rem, 70vw);
     }
     .clicker{
       padding: 2.5rem 0;
+    }
+    .coin-counter{
+      font-size: 2.2em;
     }
 
   }

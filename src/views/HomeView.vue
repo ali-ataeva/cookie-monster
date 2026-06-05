@@ -7,16 +7,21 @@ import Navbar from '../components/Navbar.vue';
 </script>
 
 <template>
-  <body>
+  <div class="page">
     <Navbar/>
     <main>
       <Clicker/>
       <Shop/>
     </main>
     <MainFooter/>
-  </body>
+  </div>
 </template>
 
-<style>
-
+<style scoped>
+  .page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
 </style>

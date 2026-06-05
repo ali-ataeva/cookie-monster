@@ -41,6 +41,7 @@ if (storedAmounts) {
 <style scoped>
   .wrapper{
     height: calc(100vh - 8rem - 8px);
+    height: calc(100dvh - 8rem - 8px);
     overflow-y: scroll;
     width: 100%;
   }
@@ -76,8 +77,9 @@ if (storedAmounts) {
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.687);
   }
   @media screen and (max-width: 750px) {
-    article{
+    .wrapper{
       height: unset;
+      overflow-y: visible;
     }
   }
 </style>
